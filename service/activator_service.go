@@ -21,7 +21,7 @@ type ActivatorService interface {
 	// of are removed from the stored queue and the created network payload is
 	// returned. The modifications of the updated queue are also persisted.
 	// TODO the CLG is a service, it should not be provided as arguments, all information are provided by networkPayload
-	Activate(CLG CLG, networkPayload objectspec.NetworkPayload) (objectspec.NetworkPayload, error)
+	Activate(clgService CLGService, networkPayload objectspec.NetworkPayload) (objectspec.NetworkPayload, error)
 	Boot()
 	// GetNetworkPayload compares the given queue against the stored configuration
 	// of the requested CLG. This configuration is a combination of behaviour IDs
@@ -35,7 +35,7 @@ type ActivatorService interface {
 	// stored queue. In case no activation configuration of the requested CLG is
 	// stored, or no match using the stored configuration associated with the
 	// requested CLG can be found, an error is returned.
-	GetNetworkPayload(CLG CLG, queue []objectspec.NetworkPayload) (objectspec.NetworkPayload, error)
+	GetNetworkPayload(clgService CLGService, queue []objectspec.NetworkPayload) (objectspec.NetworkPayload, error)
 	Metadata() map[string]string
 	// New uses the given queue to find a combination of network
 	// payloads that fulfill the interface of the requested CLG. This creation
@@ -44,7 +44,7 @@ type ActivatorService interface {
 	// CLG, this found combination is stored as activation configuration for the
 	// requested CLG. In case no match using the permuted network payloads of the
 	// given queue can be found, an error is returned.
-	New(CLG CLG, queue []objectspec.NetworkPayload) (objectspec.NetworkPayload, error)
+	New(clgService CLGService, queue []objectspec.NetworkPayload) (objectspec.NetworkPayload, error)
 	Service() ServiceCollection
 	SetServiceCollection(serviceCollection ServiceCollection)
 }

@@ -10,10 +10,11 @@ type ServiceCollection interface {
 	Endpoint() EndpointCollection
 	Feature() FeatureService
 	Forwarder() ForwarderService
-	// FS returns a file system service. It is used to operate on file system
-	// abstractions of a certain type.
+	// FSService returns a file system service. It is used to operate on file
+	// system abstractions of a certain type.
 	FS() FSService
-	// ID returns an ID service. It is used to create IDs of a certain type.
+	// IDService returns an ID service. It is used to create IDs of a certain
+	// type.
 	ID() IDService
 	Instrumentor() InstrumentorService
 	// Log returns a log service. It is used to print log messages.
@@ -25,22 +26,22 @@ type ServiceCollection interface {
 	// Random returns a random service. It is used to create random numbers.
 	Random() RandomService
 	SetActivatorService(activatorService ActivatorService)
-	SetConnectionService(connection ConnectionService)
+	SetConnectionService(connectionService ConnectionService)
 	SetEndpointCollection(endpointCollection EndpointCollection)
-	SetFeatureService(feature FeatureService)
-	SetForwarderService(forwarder ForwarderService)
-	SetFSService(FS FSService)
-	SetIDService(ID IDService)
-	SetInstrumentorService(instrumentor InstrumentorService)
-	SetLogService(log LogService)
-	SetNetworkService(network NetworkService)
-	SetPermutationService(permutation PermutationService)
-	SetRandomService(random RandomService)
+	SetFeatureService(featureService FeatureService)
+	SetForwarderService(forwarderService ForwarderService)
+	SetFSService(fsService FSService)
+	SetIDService(idService IDService)
+	SetInstrumentorService(instrumentorService InstrumentorService)
+	SetLogService(logService LogService)
+	SetNetworkService(networkService NetworkService)
+	SetPermutationService(permutationService PermutationService)
+	SetRandomService(randomService RandomService)
 	SetStorageCollection(storageCollection StorageCollection)
 	// TODO move to InputCollection/OutputCollection => InputService/OutputService
-	SetTextInputService(textInput TextInputService)
-	SetTextOutputService(textOutput TextOutputService)
-	SetTrackerService(tracker TrackerService)
+	SetTextInputService(textInputService TextInputService)
+	SetTextOutputService(textOutputService TextOutputService)
+	SetTrackerService(trackerService TrackerService)
 	// Shutdown ends all processes of the service collection like shutting down a
 	// machine. The call to Shutdown blocks until the service collection is
 	// completely shut down, so you might want to call it in a separate goroutine.
@@ -48,9 +49,9 @@ type ServiceCollection interface {
 	Storage() StorageCollection
 	// TextInput returns an text output service. It is used to send text
 	// responses back to the client.
-	TextInput() TextInpuService)
+	TextInput() TextInputService
 	// TextOutput returns an text output service. It is used to send text
 	// responses back to the client.
-	TextOutput() TextOutpuService)
-	Tracker() TrackeService)
+	TextOutput() TextOutputService
+	Tracker() TrackerService
 }

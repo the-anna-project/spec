@@ -29,7 +29,7 @@ type NetworkService interface {
 	//                             | CLG |
 	//                             |-----|
 	//
-	Activate(CLG CLG, networkPayload objectspec.NetworkPayload) (objectspec.NetworkPayload, error)
+	Activate(clgService CLGService, networkPayload objectspec.NetworkPayload) (objectspec.NetworkPayload, error)
 	// Boot initializes and starts the whole network like booting a machine. The
 	// call to Boot blocks until the network is completely initialized, so you
 	// might want to call it in a separate goroutine.
@@ -43,7 +43,7 @@ type NetworkService interface {
 	// Calculate executes the activated CLG and invokes its actual implemented
 	// behaviour. This behaviour can be anything. It is up to the CLG what it
 	// does with the provided NetworkPayload.
-	Calculate(CLG CLG, networkPayload objectspec.NetworkPayload) (objectspec.NetworkPayload, error)
+	Calculate(clgService CLGService, networkPayload objectspec.NetworkPayload) (objectspec.NetworkPayload, error)
 	// EventListener is a worker pool function which is executed multiple times
 	// concurrently to listen for network events. A network event is qualified by
 	// a network payload being queued and waiting to be processed. A network event
@@ -55,7 +55,7 @@ type NetworkService interface {
 	EventListener(canceler <-chan struct{}) error
 	// EventHandler effectively executes a network event associated to a CLG and
 	// the corresponding network payload. EventHandler is called by EventListener.
-	EventHandler(CLG CLG, networkPayload objectspec.NetworkPayload) error
+	EventHandler(clgService CLGService, networkPayload objectspec.NetworkPayload) error
 	// Forward is triggered after the CLGs calculation. Here will be decided what
 	// to do next. Like Activate, it is up to the CLG if it forwards signals to
 	// further CLGs. E.g. a CLG may or may not forward its calculated results to
@@ -76,7 +76,7 @@ type NetworkService interface {
 	//     | CLG |     | CLG |     | CLG |     | CLG |     | CLG |
 	//     |-----|     |-----|     |-----|     |-----|     |-----|
 	//
-	Forward(CLG CLG, networkPayload objectspec.NetworkPayload) error
+	Forward(clgService CLGService, networkPayload objectspec.NetworkPayload) error
 	// InputListener is a worker pool function which is executed multiple times
 	// concurrently to listen for network inputs. A network input is qualified by
 	// information sequences sent by clients who request some calculation from the
@@ -85,7 +85,7 @@ type NetworkService interface {
 	// InputHandler effectively executes the network input by invoking the input
 	// CLG using the incoming text request. InputHandler is called by
 	// InputListener.
-	InputHandler(CLG CLG, textInput objectspec.TextInput) error
+	InputHandler(clgService CLGService, textInput objectspec.TextInput) error
 	// Shutdown ends all processes of the network like shutting down a machine.
 	// The call to Shutdown blocks until the network is completely shut down, so
 	// you might want to call it in a separate goroutine.
@@ -95,5 +95,5 @@ type NetworkService interface {
 	// Track tracks connections being created to learn from connection path
 	// patterns. Various data structures are stored to observe the behaviour of
 	// the neural network to act accordingly.
-	Track(CLG CLG, networkPayload objectspec.NetworkPayload) error
+	Track(clgService CLGService, networkPayload objectspec.NetworkPayload) error
 }

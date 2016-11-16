@@ -17,7 +17,7 @@ type ForwarderService interface {
 	//
 	// The network payloads being found by any of the lookup functions listed
 	// above are queued by Forward.
-	Forward(CLG CLG, networkPayload objectspec.NetworkPayload) error
+	Forward(clgService CLGService, networkPayload objectspec.NetworkPayload) error
 	// GetMaxSignals returns the maximum number of signals being forwarded by one
 	// CLG.
 	GetMaxSignals() int
@@ -26,11 +26,11 @@ type ForwarderService interface {
 	// there are behaviour IDs found, a network payload for each behaviour ID is
 	// created and the list of new network payloads is returned. If there could
 	// not any behaviour ID be found, an error is returned.
-	GetNetworkPayloads(CLG CLG, networkPayload objectspec.NetworkPayload) ([]objectspec.NetworkPayload, error)
+	GetNetworkPayloads(clgService CLGService, networkPayload objectspec.NetworkPayload) ([]objectspec.NetworkPayload, error)
 	// News creates new connections to other CLGs in a pseudo random
 	// manner. For each connection one network payload is created. The resulting
 	// list is returned.
-	News(CLG CLG, networkPayload objectspec.NetworkPayload) ([]objectspec.NetworkPayload, error)
+	News(clgService CLGService, networkPayload objectspec.NetworkPayload) ([]objectspec.NetworkPayload, error)
 	Service() ServiceCollection
 	SetServiceCollection(serviceCollection ServiceCollection)
 }
