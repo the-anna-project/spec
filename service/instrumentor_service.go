@@ -4,6 +4,7 @@ import (
 	"net/http"
 )
 
+// TODO move to object collection
 // InstrumentorCounter is a metric that can be arbitrarily incremented.
 type InstrumentorCounter interface {
 	// IncrBy increments the current counter by the given delta.
