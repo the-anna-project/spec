@@ -10,8 +10,11 @@ install:
   - go build ./object
   - go build ./service
 
+# Travis CI executes go test by default in case there is no script phase
+# defined. Therefore we need to define something to not run tests, because there
+# are none.
 script:
-#- go test -race -covermode=atomic -coverprofile=coverage.txt
+- echo "no tests to run"
 
 notifications:
   email: false
@@ -19,6 +22,3 @@ notifications:
 branches:
   only:
     - master
-
-after_success:
-#- bash <(curl -s https://codecov.io/bash)
