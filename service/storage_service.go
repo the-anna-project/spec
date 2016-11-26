@@ -134,8 +134,8 @@ type StorageService interface {
 	// immediately.
 	WalkKeys(glob string, closer <-chan struct{}, cb func(key string) error) error
 	SetBackoffFactory(backoffFactory func() objectspec.Backoff)
-	SetPrefix(prefix string)
 	SetPool(pool *redis.Pool)
+	SetPrefix(prefix string)
 	Service() ServiceCollection
 	SetServiceCollection(serviceCollection ServiceCollection)
 }
