@@ -13,7 +13,11 @@ type StorageCollection interface {
 	// retrieved more efficiently when there are only keys belonging to features.
 	// Other data structures in here would make the scanning algorithms less
 	// efficient.
+	//
+	// TODO rename to information service???
 	Feature() StorageService
+	// TODO add behaviour service???
+
 	// General represents a general storage. It is used to store general data
 	// which is not stored in specialized storage instances.
 	General() StorageService
