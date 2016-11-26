@@ -7,6 +7,8 @@ type LayerCollection interface {
 	Boot()
 	Behaviour() LayerService
 	Information() LayerService
-	SetBehaviour(behaviourService LayerService)
-	SetInformation(informationService LayerService)
+	Position() LayerService
+	SetBehaviourService(behaviourService LayerService)
+	SetInformationService(informationService LayerService)
+	SetPositionService(informationService LayerService)
 }
