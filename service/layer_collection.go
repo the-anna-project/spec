@@ -5,8 +5,8 @@ package spec
 // easily be passed around.
 type LayerCollection interface {
 	Boot()
-	Behaviour() servicespec.LayerService
-	Information() servicespec.LayerService
-	SetBehaviour(behaviourService servicespec.LayerService)
-	SetInformation(informationService servicespec.LayerService)
+	Behaviour() LayerService
+	Information() LayerService
+	SetBehaviour(behaviourService LayerService)
+	SetInformation(informationService LayerService)
 }
