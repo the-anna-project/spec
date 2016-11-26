@@ -1,8 +1,8 @@
 package spec
 
-// StorageCollection represents a collection of storage instances. This scopes
-// different storage implementations in a simple container, which can easily be
-// passed around.
+// StorageCollection represents a collection of storage services. This scopes
+// different storage service implementations in a simple container, which can
+// easily be passed around.
 type StorageCollection interface {
 	Boot()
 	Connection() StorageService

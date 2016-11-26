@@ -1,6 +1,6 @@
 package spec
 
-// ServiceCollection represents a collection of factories. This scopes different
+// ServiceCollection represents a collection of services. This scopes different
 // service implementations in a simple container, which can easily be passed
 // around.
 type ServiceCollection interface {
