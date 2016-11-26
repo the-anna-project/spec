@@ -35,5 +35,6 @@ type LayerService interface {
 	DeleteConnection(peerA, peerB string) error
 	Metadata() map[string]string
 	Service() ServiceCollection
+	SetKind(kind string)
 	SetServiceCollection(serviceCollection ServiceCollection)
 }
