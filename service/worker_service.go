@@ -1,5 +1,9 @@
 package spec
 
+import (
+	objectspec "github.com/the-anna-project/spec/object"
+)
+
 // WorkerService implements a service to process work concurrently.
 type WorkerService interface {
 	// Execute runs all workers concurrently configured for the current pool. The
