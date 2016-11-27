@@ -6,6 +6,7 @@ import (
 
 // WorkerService implements a service to process work concurrently.
 type WorkerService interface {
+	Boot()
 	// Execute runs all workers concurrently configured for the current pool. The
 	// call to Execute blocks until all workers within the pool have finished
 	// their work.
@@ -16,4 +17,7 @@ type WorkerService interface {
 	Execute(config objectspec.WorkerExecuteConfig) chan error
 	// ExecuteConfig provides a default configuration for Execute.
 	ExecuteConfig() objectspec.WorkerExecuteConfig
+	Metadata() map[string]string
+	Service() ServiceCollection
+	SetServiceCollection(serviceCollection ServiceCollection)
 }
