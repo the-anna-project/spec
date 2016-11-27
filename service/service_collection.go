@@ -1,4 +1,4 @@
-package spec
+package service
 
 // ServiceCollection represents a collection of services. This scopes different
 // service implementations in a simple container, which can easily be passed
