@@ -9,7 +9,5 @@ type PeerService interface {
 	Metadata() map[string]string
 	Search(peer string) ([]string, error)
 	Service() ServiceCollection
-	SetDimensionCount(dimensionCount int)
-	SetDimensionDepth(dimensionDepth int)
 	SetServiceCollection(serviceCollection ServiceCollection)
 }
